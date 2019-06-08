@@ -1,25 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Suspense } from "react";
+import { Router } from "@reach/router";
+
+import Store from "./utils/storeContext";
+
+const UserSearch = React.lazy(() => import("./containers/UserSearch"));
+const Item = React.lazy(() => import("./containers/Item"));
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Store>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Router>
+          <UserSearch path="/" />
+          <UserSearch path="/user/:userId" />
+          <Item path="/item/:itemId" />
+        </Router>
+      </Suspense>
+    </Store>
   );
 }
 
