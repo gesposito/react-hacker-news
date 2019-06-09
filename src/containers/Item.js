@@ -26,7 +26,7 @@ function Item({ itemId }) {
   return (
     <section>
       <div>
-        <Link to={`/user/${item.by}`}>&#8592; </Link>
+        <Link to={`${process.env.PUBLIC_URL}/user/${item.by}`}>&#8592; </Link>
         <h1>{item.title}</h1>
         <button
           onClick={() =>

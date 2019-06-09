@@ -10,7 +10,7 @@ function UserSearch({ userId = "" }) {
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      username && navigate(`/user/${username}`);
+      username && navigate(`${process.env.PUBLIC_URL}/user/${username}`);
     }, 300);
     return () => clearTimeout(timeout);
   }, [username]);

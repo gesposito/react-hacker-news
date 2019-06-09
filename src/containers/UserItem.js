@@ -35,7 +35,7 @@ function UserItem({ itemId }) {
   return (
     <tr>
       <td>
-        {item.type === "story" && <Link to={`/item/${itemId}`}>{item.id}</Link>}
+        {item.type === "story" && <Link to={`${process.env.PUBLIC_URL}/item/${itemId}`}>{item.id}</Link>}
       </td>
       <td>{item.time && getFormattedDate(item.time * 1000)}</td>
       <td>{item.title || item.text}</td>
